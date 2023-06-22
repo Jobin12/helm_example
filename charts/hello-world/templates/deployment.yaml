@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: {{ include "hello-world.fullname" . }}
   labels:
@@ -31,3 +31,8 @@ spec:
             httpGet:
               path: /
               port: http
+      strategy:
+        blueGreen:
+          activeService: {{ .Values.activeService.name }}
+          previewService: {{ .Values.previewService.name }}
+          autoPromotionEnabled: false
