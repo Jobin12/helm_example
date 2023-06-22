@@ -10,10 +10,15 @@ spec:
     matchLabels:
       {{- include "hello-world.selectorLabels" . | nindent 6 }}
   strategy:
-    blueGreen:
-      activeService: {{ .Values.activeService.name }}
-      previewService: {{ .Values.previewService.name }}
-      autoPromotionEnabled: false
+    canary:
+      maxSurge: "25%"
+      maxUnavailable: 0
+      steps:
+        - setWeight: 40
+        - pause: 
+            duration: 10m
+        - setWeight: 70
+        - pause: {}
   template:
     metadata:
       labels:
