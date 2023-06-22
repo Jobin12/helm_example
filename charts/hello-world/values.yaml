@@ -30,4 +30,4 @@ activeService:
 activeService:
   name: "helloworld-preview-svc"
   type: ClusterIP
-  port: 80
+  port: 85
