@@ -10,10 +10,10 @@ spec:
     matchLabels:
       {{- include "hello-world.selectorLabels" . | nindent 6 }}
   strategy:
-  blueGreen:
-    activeService: {{ .Values.activeService.name }}
-    previewService: {{ .Values.previewService.name }}
-    autoPromotionEnabled: false
+    blueGreen:
+      activeService: {{ .Values.activeService.name }}
+      previewService: {{ .Values.previewService.name }}
+      autoPromotionEnabled: false
   template:
     metadata:
       labels:
