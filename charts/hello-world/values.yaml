@@ -26,8 +26,3 @@ activeService:
   name: "helloworld-active-svc"
   type: ClusterIP
   port: 80
-
-previewService:
-  name: "helloworld-preview-svc"
-  type: ClusterIP
-  port: 85
